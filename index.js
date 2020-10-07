@@ -17,6 +17,9 @@ app.set('jwt', jwt)
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname, 'public')))
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 
 consign({ cwd: 'src' })
     .include("db")
@@ -28,9 +31,6 @@ consign({ cwd: 'src' })
     .into(app)
 
 server
-    .use(express.static(path.join(__dirname, 'public')))
-    .set('views', path.join(__dirname, 'views'))
-    .set('view engine', 'ejs')
     .listen(8000, function() { // modificar
         console.log("Servidor rodando na porta 8000");
 })
