@@ -31,6 +31,6 @@ consign({ cwd: 'src' })
     .into(app)
 
 server
-    .listen(8000, function() { // modificar
+    .listen(PORT, function() { // modificar
         console.log("Servidor rodando na porta 8000");
 })
