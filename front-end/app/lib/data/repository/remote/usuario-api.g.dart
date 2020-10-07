@@ -37,7 +37,7 @@ class _UsuarioAPI implements UsuarioAPI {
   }
 
   @override
-  Future<dynamic> inserir(usuario) async {
+  Future<dynamic> create(usuario) async {
     ArgumentError.checkNotNull(usuario, 'usuario');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -48,6 +48,27 @@ class _UsuarioAPI implements UsuarioAPI {
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = _result.data;
+    return value;
+  }
+
+  @override
+  Future<dynamic> update(id, obj) async {
+    ArgumentError.checkNotNull(id, 'id');
+    ArgumentError.checkNotNull(obj, 'obj');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(obj?.toJson() ?? <String, dynamic>{});
+    _data.removeWhere((k, v) => v == null);
+    final _result = await _dio.request('/$id',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'PUT',
             headers: <String, dynamic>{},
             extra: _extra,
             baseUrl: baseUrl),

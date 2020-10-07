@@ -14,6 +14,12 @@ class UsuarioRepository {
   Future create(Usuario usuario) async {
     Dio dio = getIt<Dio>();
     UsuarioAPI api = UsuarioAPI(dio);
-    return api.inserir(usuario);
+    return api.create(usuario);
+  }
+
+  Future update(Usuario obj) async {
+    Dio dio = getIt<Dio>();
+    UsuarioAPI api = UsuarioAPI(dio);
+    return api.update(obj.id, obj);
   }
 }

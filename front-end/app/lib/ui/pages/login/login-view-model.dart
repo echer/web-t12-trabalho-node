@@ -9,4 +9,12 @@ class LoginViewModel extends ChangeNotifier {
   Future<Login> login(Usuario usuario) async {
     return await repository.login(usuario);
   }
+
+  Future<void> createOrUpdate(Usuario obj) {
+    if (obj.id.isEmpty) {
+      obj.id = null;
+      return repository.create(obj);
+    }
+    return repository.update(obj);
+  }
 }

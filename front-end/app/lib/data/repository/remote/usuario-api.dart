@@ -13,5 +13,7 @@ abstract class UsuarioAPI {
   @POST("/login")
   Future<Login> login(@Body() Usuario usuario);
   @POST("/")
-  Future inserir(@Body() Usuario usuario);
+  Future create(@Body() Usuario usuario);
+  @PUT("/{id}")
+  Future update(@Path() String id, @Body() Usuario obj);
 }

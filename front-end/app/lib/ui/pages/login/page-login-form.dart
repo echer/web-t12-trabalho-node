@@ -2,6 +2,7 @@ import 'package:app/App.dart';
 import 'package:app/data/domain/usuario.dart';
 import 'package:app/data/service/service-locator.dart';
 import 'package:app/ui/pages/login/login-view-model.dart';
+import 'package:app/ui/pages/login/page-novo-usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -48,8 +49,7 @@ class _LoginPageForm extends State<LoginPageForm> {
                   return null;
                 },
               ),
-              RaisedButton(
-                color: Theme.of(context).accentColor,
+              ElevatedButton(
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     Scaffold.of(context).showSnackBar(
@@ -81,6 +81,19 @@ class _LoginPageForm extends State<LoginPageForm> {
                   }
                 },
                 child: Text('Login'),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  var usuarioCadastrado = await Navigator.of(context).pushNamed(
+                      PageCadastroUsuario.routeName,
+                      arguments: new Usuario());
+                  if (usuarioCadastrado != null) {
+                    Usuario usuario = usuarioCadastrado as Usuario;
+                    usuarioController.text = usuario.email;
+                    senhaController.text = usuario.senha;
+                  }
+                },
+                child: Text('Cadastro'),
               ),
             ],
           ),
