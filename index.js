@@ -3,13 +3,15 @@ const http = require("http")
 const consign = require("consign")
 const jwt = require("jsonwebtoken");
 const cors = require('cors')
+const PORT = process.env.PORT || 5000
+const path = require('path')
 
 require('dotenv').config();
 
 const app = express();
 const server = http.Server(app)
 
-app.use(cors({ origin: 'http://localhost:8080', credentials: true }))
+app.use(cors({ origin: 'https://alan-echer-webt12-trabalho.herokuapp.com', credentials: true }))
 
 app.set('jwt', jwt)
 
@@ -25,6 +27,10 @@ consign({ cwd: 'src' })
     .then("routes")
     .into(app)
 
-server.listen(8000, function() { // modificar
-    console.log("Servidor rodando na porta 8000");
+server
+    .use(express.static(path.join(__dirname, 'public')))
+    .set('views', path.join(__dirname, 'views'))
+    .set('view engine', 'ejs')
+    .listen(8000, function() { // modificar
+        console.log("Servidor rodando na porta 8000");
 })
