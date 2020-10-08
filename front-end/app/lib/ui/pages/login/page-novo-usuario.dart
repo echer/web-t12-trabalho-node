@@ -67,51 +67,57 @@ class _PageCadastroUsuario extends State<PageCadastroUsuario> {
             : 'Editar: ${idController.text}'),
       ),
       body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  controller: idController,
-                  readOnly: true,
-                  enabled: false,
-                  decoration: InputDecoration(labelText: 'ID'),
+        child: new SingleChildScrollView(
+          child: new Column(
+            children: <Widget>[
+              Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        controller: idController,
+                        readOnly: true,
+                        enabled: false,
+                        decoration: InputDecoration(labelText: 'ID'),
+                      ),
+                      TextFormField(
+                        controller: nomeController,
+                        decoration: InputDecoration(labelText: 'Nome'),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Informe o Nome';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        controller: emailController,
+                        decoration: InputDecoration(labelText: 'E-mail'),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Informe o E-mail';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        controller: senhaController,
+                        obscureText: true,
+                        decoration: InputDecoration(labelText: 'Senha'),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Informe a Senha';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                TextFormField(
-                  controller: nomeController,
-                  decoration: InputDecoration(labelText: 'Nome'),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Informe o Nome';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(labelText: 'E-mail'),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Informe o E-mail';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: senhaController,
-                  obscureText: true,
-                  decoration: InputDecoration(labelText: 'Senha'),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Informe a Senha';
-                    }
-                    return null;
-                  },
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

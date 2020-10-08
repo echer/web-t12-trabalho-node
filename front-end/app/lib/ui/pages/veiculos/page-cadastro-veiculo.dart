@@ -80,63 +80,71 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
             : 'Editar: ${idController.text}'),
       ),
       body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  controller: idController,
-                  readOnly: true,
-                  enabled: false,
-                  decoration: InputDecoration(labelText: 'ID'),
+        child: new SingleChildScrollView(
+          child: new Column(
+            children: <Widget>[
+              Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        controller: idController,
+                        readOnly: true,
+                        enabled: false,
+                        decoration: InputDecoration(labelText: 'ID'),
+                      ),
+                      TextFormField(
+                        controller: modeloController,
+                        decoration: InputDecoration(labelText: 'Modelo'),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Informe o Modelo';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        controller: marcaController,
+                        decoration: InputDecoration(labelText: 'Marca'),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Informe a Marca';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        controller: placaController,
+                        decoration: InputDecoration(labelText: 'Placa'),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Informe a Placa';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        controller: anoController,
+                        decoration: InputDecoration(labelText: 'Ano'),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        keyboardType: TextInputType.number,
+                        maxLength: 4,
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Informe o Ano';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                TextFormField(
-                  controller: modeloController,
-                  decoration: InputDecoration(labelText: 'Modelo'),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Informe o Modelo';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: marcaController,
-                  decoration: InputDecoration(labelText: 'Marca'),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Informe a Marca';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: placaController,
-                  decoration: InputDecoration(labelText: 'Placa'),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Informe a Placa';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: anoController,
-                  decoration: InputDecoration(labelText: 'Ano'),
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  keyboardType: TextInputType.number,
-                  maxLength: 4,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Informe o Ano';
-                    }
-                    return null;
-                  },
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -72,40 +72,46 @@ class _PageCadastroAviso extends State<PageCadastroAviso> {
             : 'Editar: ${idController.text}'),
       ),
       body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  controller: idController,
-                  readOnly: true,
-                  enabled: false,
-                  decoration: InputDecoration(labelText: 'ID'),
+        child: new SingleChildScrollView(
+          child: new Column(
+            children: <Widget>[
+              Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        controller: idController,
+                        readOnly: true,
+                        enabled: false,
+                        decoration: InputDecoration(labelText: 'ID'),
+                      ),
+                      TextFormField(
+                        controller: tituloController,
+                        decoration: InputDecoration(labelText: 'Título'),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Informe o Título';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        controller: messageController,
+                        decoration: InputDecoration(labelText: 'Mensagem'),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Informe a Mensagem';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                TextFormField(
-                  controller: tituloController,
-                  decoration: InputDecoration(labelText: 'Título'),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Informe o Título';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: messageController,
-                  decoration: InputDecoration(labelText: 'Mensagem'),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Informe a Mensagem';
-                    }
-                    return null;
-                  },
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
