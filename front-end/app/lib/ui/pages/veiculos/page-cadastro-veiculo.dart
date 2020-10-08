@@ -53,6 +53,8 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
 
                 await viewModel.createOrUpdate(createOrupdate).then((value) {
                   Navigator.pop(context, 'refresh');
+                }, onError: (e) {
+                  print(e);
                 }).catchError((error) {
                   print(error);
                 });
@@ -67,6 +69,8 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
 
                 await viewModel.delete(obj).then((value) {
                   Navigator.pop(context, 'refresh');
+                }, onError: (e) {
+                  print(e);
                 }).catchError((error) {
                   print(error);
                 });

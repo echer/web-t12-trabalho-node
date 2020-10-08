@@ -48,6 +48,8 @@ class _PageCadastroUsuario extends State<PageCadastroUsuario> {
 
                 await viewModel.createOrUpdate(createOrupdate).then((value) {
                   Navigator.pop(context, createOrupdate);
+                }, onError: (e) {
+                  print(e);
                 }).catchError((error) {
                   print(error);
                 });
