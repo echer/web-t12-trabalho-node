@@ -1,4 +1,5 @@
 import 'package:app/LoginApp.dart';
+import 'package:app/ui/pages/avisos/page-aviso.dart';
 import 'package:app/ui/pages/veiculos/page-veiculo.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,6 +31,12 @@ class PageHome extends StatelessWidget {
               title: Text('Meus Veiculos'),
               onTap: () =>
                   {Navigator.of(context).pushNamed(PageVeiculo.routeName)},
+            ),
+            ListTile(
+              leading: Icon(Icons.money_off),
+              title: Text('Meus Avisos'),
+              onTap: () =>
+                  {Navigator.of(context).pushNamed(PageAviso.routeName)},
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),

@@ -1,5 +1,6 @@
 // 1
 import 'package:app/data/service/service-locator.iconfig.dart';
+import 'package:app/ui/pages/avisos/avisos-view-model.dart';
 import 'package:app/ui/pages/login/login-view-model.dart';
 import 'package:app/ui/pages/veiculos/veiculo-view-model.dart';
 import 'package:dio/dio.dart';
@@ -12,6 +13,7 @@ final GetIt getIt = GetIt.instance;
 
 @injectableInit
 Future<void> configureInjection() async {
+  getIt.registerFactory<AvisosViewModel>(() => AvisosViewModel());
   getIt.registerFactory<VeiculoViewModel>(() => VeiculoViewModel());
   getIt.registerFactory<LoginViewModel>(() => LoginViewModel());
   getIt.registerSingletonAsync<SharedPreferences>(

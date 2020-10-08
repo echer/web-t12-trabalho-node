@@ -1,3 +1,5 @@
+import 'package:app/ui/pages/avisos/page-aviso.dart';
+import 'package:app/ui/pages/avisos/page-cadastro-aviso.dart';
 import 'package:app/ui/pages/home/page-home.dart';
 import 'package:app/ui/pages/veiculos/page-cadastro-veiculo.dart';
 import 'package:app/ui/pages/veiculos/page-veiculo.dart';
@@ -18,8 +20,11 @@ class App extends StatelessWidget {
         var routes = {
           PageHome.routeName: (context) => PageHome(),
           PageVeiculo.routeName: (context) => PageVeiculo(),
+          PageAviso.routeName: (context) => PageAviso(),
           PageCadastroVeiculo.routeName: (context) =>
               PageCadastroVeiculo(settings.arguments),
+          PageCadastroAviso.routeName: (context) =>
+              PageCadastroAviso(settings.arguments),
         };
         WidgetBuilder builder = routes[settings.name];
         return MaterialPageRoute(builder: (ctx) => builder(ctx));
