@@ -95,7 +95,7 @@ class _PageCadastroAviso extends State<PageCadastroAviso> {
                   },
                 ),
                 TextFormField(
-                  controller: tituloController,
+                  controller: messageController,
                   decoration: InputDecoration(labelText: 'Mensagem'),
                   validator: (value) {
                     if (value.isEmpty) {

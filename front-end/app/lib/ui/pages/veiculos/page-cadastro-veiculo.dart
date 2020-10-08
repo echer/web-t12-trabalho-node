@@ -31,8 +31,8 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
         TextEditingController(text: widget.model.modelo);
     TextEditingController placaController =
         TextEditingController(text: widget.model.placa);
-    TextEditingController anoController =
-        TextEditingController(text: widget.model.ano.toString());
+    TextEditingController anoController = TextEditingController(
+        text: widget.model.ano != null ? widget.model.ano.toString() : "");
 
     return Scaffold(
       appBar: AppBar(
@@ -123,7 +123,7 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
                   },
                 ),
                 TextFormField(
-                  controller: modeloController,
+                  controller: anoController,
                   decoration: InputDecoration(labelText: 'Ano'),
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   keyboardType: TextInputType.number,

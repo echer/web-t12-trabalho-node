@@ -9,7 +9,10 @@ part of 'veiculo.dart';
 Veiculo _$VeiculoFromJson(Map<String, dynamic> json) {
   return Veiculo(
     id: json['_id'] as String,
-    nome: json['nome'] as String,
+    marca: json['marca'] as String,
+    modelo: json['modelo'] as String,
+    placa: json['placa'] as String,
+    ano: json['ano'] as int,
   );
 }
 
@@ -23,6 +26,9 @@ Map<String, dynamic> _$VeiculoToJson(Veiculo instance) {
   }
 
   writeNotNull('_id', instance.id);
-  writeNotNull('nome', instance.nome);
+  writeNotNull('marca', instance.marca);
+  writeNotNull('modelo', instance.modelo);
+  writeNotNull('placa', instance.placa);
+  writeNotNull('ano', instance.ano);
   return val;
 }

@@ -9,7 +9,8 @@ part of 'aviso.dart';
 Aviso _$AvisoFromJson(Map<String, dynamic> json) {
   return Aviso(
     id: json['_id'] as String,
-    nome: json['nome'] as String,
+    titulo: json['titulo'] as String,
+    message: json['message'] as String,
   );
 }
 
@@ -23,6 +24,7 @@ Map<String, dynamic> _$AvisoToJson(Aviso instance) {
   }
 
   writeNotNull('_id', instance.id);
-  writeNotNull('nome', instance.nome);
+  writeNotNull('titulo', instance.titulo);
+  writeNotNull('message', instance.message);
   return val;
 }
