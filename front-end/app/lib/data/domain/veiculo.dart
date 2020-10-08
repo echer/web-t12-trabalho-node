@@ -6,11 +6,17 @@ part 'veiculo.g.dart';
 class Veiculo {
   @JsonKey(name: "_id")
   String id;
-  String nome;
+  String marca;
+  String modelo;
+  String placa;
+  int ano;
 
   Veiculo({
     this.id,
-    this.nome,
+    this.marca,
+    this.modelo,
+    this.placa,
+    this.ano,
   });
 
   factory Veiculo.fromJson(Map<String, dynamic> json) =>

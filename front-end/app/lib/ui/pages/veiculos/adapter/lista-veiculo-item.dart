@@ -12,13 +12,13 @@ class ListaVeiculoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        'Nome: ${model.nome}',
+        'Modelo: ${model.modelo} / Marca: ${model.marca}',
         style: TextStyle(fontWeight: FontWeight.bold),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
       subtitle: Text(
-        '',
+        'Placa: ${model.placa} / Ano: ${model.ano}',
         style: TextStyle(fontWeight: FontWeight.normal),
       ),
       trailing: IconButton(

@@ -12,13 +12,13 @@ class ListaAvisoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        'Nome: ${model.nome}',
+        'Título: ${model.titulo}',
         style: TextStyle(fontWeight: FontWeight.bold),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
       subtitle: Text(
-        '',
+        'Mensagem: ${model.message}',
         style: TextStyle(fontWeight: FontWeight.normal),
       ),
       trailing: IconButton(

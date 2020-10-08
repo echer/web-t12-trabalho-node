@@ -23,8 +23,10 @@ class _PageCadastroAviso extends State<PageCadastroAviso> {
 
     TextEditingController idController =
         TextEditingController(text: widget.model.id);
-    TextEditingController nomeController =
-        TextEditingController(text: widget.model.nome);
+    TextEditingController tituloController =
+        TextEditingController(text: widget.model.titulo);
+    TextEditingController messageController =
+        TextEditingController(text: widget.model.message);
 
     return Scaffold(
       appBar: AppBar(
@@ -36,8 +38,10 @@ class _PageCadastroAviso extends State<PageCadastroAviso> {
                 //Scaffold.of(context).showSnackBar(
                 //   SnackBar(content: Text('Realizando cadastro aguarde...')));
 
-                Aviso createOrupdate =
-                    Aviso(id: idController.text, nome: nomeController.text);
+                Aviso createOrupdate = Aviso(
+                    id: idController.text,
+                    titulo: tituloController.text,
+                    message: messageController.text);
 
                 await viewModel
                     .createOrUpdate(createOrupdate)
@@ -81,11 +85,21 @@ class _PageCadastroAviso extends State<PageCadastroAviso> {
                   decoration: InputDecoration(labelText: 'ID'),
                 ),
                 TextFormField(
-                  controller: nomeController,
-                  decoration: InputDecoration(labelText: 'Nome'),
+                  controller: tituloController,
+                  decoration: InputDecoration(labelText: 'Título'),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Informe o Nome';
+                      return 'Informe o Título';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: tituloController,
+                  decoration: InputDecoration(labelText: 'Mensagem'),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Informe a Mensagem';
                     }
                     return null;
                   },

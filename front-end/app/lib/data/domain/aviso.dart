@@ -6,14 +6,15 @@ part 'aviso.g.dart';
 class Aviso {
   @JsonKey(name: "_id")
   String id;
-  String nome;
+  String titulo;
+  String message;
 
   Aviso({
     this.id,
-    this.nome,
+    this.titulo,
+    this.message,
   });
 
-  factory Aviso.fromJson(Map<String, dynamic> json) =>
-      _$AvisoFromJson(json);
+  factory Aviso.fromJson(Map<String, dynamic> json) => _$AvisoFromJson(json);
   Map<String, dynamic> toJson() => _$AvisoToJson(this);
 }

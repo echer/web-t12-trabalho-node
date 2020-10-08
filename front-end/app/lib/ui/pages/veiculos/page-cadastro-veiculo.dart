@@ -1,7 +1,9 @@
 import 'package:app/data/domain/veiculo.dart';
 import 'package:app/data/service/service-locator.dart';
+import 'package:app/ui/pages/utils/decimal-input-format.dart';
 import 'package:app/ui/pages/veiculos/veiculo-view-model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PageCadastroVeiculo extends StatefulWidget {
   static const routeName = '/cadastro/veiculo';
@@ -23,8 +25,14 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
 
     TextEditingController idController =
         TextEditingController(text: widget.model.id);
-    TextEditingController nomeController =
-        TextEditingController(text: widget.model.nome);
+    TextEditingController marcaController =
+        TextEditingController(text: widget.model.marca);
+    TextEditingController modeloController =
+        TextEditingController(text: widget.model.modelo);
+    TextEditingController placaController =
+        TextEditingController(text: widget.model.placa);
+    TextEditingController anoController =
+        TextEditingController(text: widget.model.ano.toString());
 
     return Scaffold(
       appBar: AppBar(
@@ -36,8 +44,12 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
                 //Scaffold.of(context).showSnackBar(
                 //   SnackBar(content: Text('Realizando cadastro aguarde...')));
 
-                Veiculo createOrupdate =
-                    Veiculo(id: idController.text, nome: nomeController.text);
+                Veiculo createOrupdate = Veiculo(
+                    id: idController.text,
+                    marca: marcaController.text,
+                    modelo: modeloController.text,
+                    placa: placaController.text,
+                    ano: int.tryParse(anoController.text)?.toInt());
 
                 await viewModel
                     .createOrUpdate(createOrupdate)
@@ -81,11 +93,44 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
                   decoration: InputDecoration(labelText: 'ID'),
                 ),
                 TextFormField(
-                  controller: nomeController,
-                  decoration: InputDecoration(labelText: 'Nome'),
+                  controller: modeloController,
+                  decoration: InputDecoration(labelText: 'Modelo'),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Informe o Nome';
+                      return 'Informe o Modelo';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: marcaController,
+                  decoration: InputDecoration(labelText: 'Marca'),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Informe a Marca';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: placaController,
+                  decoration: InputDecoration(labelText: 'Placa'),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Informe a Placa';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: modeloController,
+                  decoration: InputDecoration(labelText: 'Ano'),
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  keyboardType: TextInputType.number,
+                  maxLength: 4,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Informe o Ano';
                     }
                     return null;
                   },
