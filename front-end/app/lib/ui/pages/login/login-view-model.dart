@@ -17,4 +17,8 @@ class LoginViewModel extends ChangeNotifier {
     }
     return repository.update(obj);
   }
+
+  Future<void> delete(Usuario obj) {
+    return repository.delete(obj);
+  }
 }

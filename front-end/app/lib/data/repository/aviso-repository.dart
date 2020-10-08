@@ -21,4 +21,10 @@ class AvisoRepository {
     AvisoAPI api = AvisoAPI(dio);
     return api.update(obj.id, obj);
   }
+
+  Future delete(Aviso obj) async {
+    Dio dio = getIt<Dio>();
+    AvisoAPI api = AvisoAPI(dio);
+    return api.delete(obj.id);
+  }
 }

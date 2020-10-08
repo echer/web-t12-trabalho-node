@@ -21,4 +21,10 @@ class VeiculoRepository {
     VeiculoAPI api = VeiculoAPI(dio);
     return api.update(obj.id, obj);
   }
+
+  Future delete(Veiculo obj) async {
+    Dio dio = getIt<Dio>();
+    VeiculoAPI api = VeiculoAPI(dio);
+    return api.delete(obj.id);
+  }
 }

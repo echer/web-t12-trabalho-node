@@ -17,4 +17,7 @@ abstract class VeiculoAPI {
 
   @PUT("/{id}")
   Future update(@Path() String id, @Body() Veiculo obj);
+
+  @DELETE("/{id}")
+  Future delete(@Path() String id);
 }

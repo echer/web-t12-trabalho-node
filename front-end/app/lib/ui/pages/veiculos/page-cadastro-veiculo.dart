@@ -52,7 +52,15 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
           if (idController.text.isNotEmpty)
             IconButton(
               icon: Icon(Icons.delete),
-              onPressed: () => {},
+              onPressed: () async {
+                Veiculo obj = Veiculo(id: idController.text);
+
+                await viewModel.delete(obj).catchError((error) {
+                  print(error);
+                }).then((value) {
+                  Navigator.pop(context, 'refresh');
+                });
+              },
             ),
         ],
         title: Text(idController.text.isEmpty

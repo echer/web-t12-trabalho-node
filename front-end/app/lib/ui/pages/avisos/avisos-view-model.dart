@@ -19,4 +19,8 @@ class AvisosViewModel extends ChangeNotifier {
     }
     return repository.update(obj);
   }
+
+  Future<void> delete(Aviso obj) {
+    return repository.delete(obj);
+  }
 }

@@ -22,4 +22,10 @@ class UsuarioRepository {
     UsuarioAPI api = UsuarioAPI(dio);
     return api.update(obj.id, obj);
   }
+
+  Future delete(Usuario obj) async {
+    Dio dio = getIt<Dio>();
+    UsuarioAPI api = UsuarioAPI(dio);
+    return api.delete(obj.id);
+  }
 }

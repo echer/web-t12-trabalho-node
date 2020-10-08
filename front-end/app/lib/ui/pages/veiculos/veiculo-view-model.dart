@@ -19,4 +19,8 @@ class VeiculoViewModel extends ChangeNotifier {
     }
     return repository.update(obj);
   }
+
+  Future<void> delete(Veiculo obj) {
+    return repository.delete(obj);
+  }
 }

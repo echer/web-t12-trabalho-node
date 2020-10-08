@@ -16,4 +16,6 @@ abstract class UsuarioAPI {
   Future create(@Body() Usuario usuario);
   @PUT("/{id}")
   Future update(@Path() String id, @Body() Usuario obj);
+  @DELETE("/{id}")
+  Future delete(@Path() String id);
 }
