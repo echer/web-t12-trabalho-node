@@ -46,12 +46,10 @@ class _PageCadastroUsuario extends State<PageCadastroUsuario> {
                     email: emailController.text,
                     senha: senhaController.text);
 
-                await viewModel
-                    .createOrUpdate(createOrupdate)
-                    .catchError((error) {
-                  print(error);
-                }).then((value) {
+                await viewModel.createOrUpdate(createOrupdate).then((value) {
                   Navigator.pop(context, createOrupdate);
+                }).catchError((error) {
+                  print(error);
                 });
               }
             },

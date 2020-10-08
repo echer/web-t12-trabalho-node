@@ -51,12 +51,10 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
                     placa: placaController.text,
                     ano: int.tryParse(anoController.text)?.toInt());
 
-                await viewModel
-                    .createOrUpdate(createOrupdate)
-                    .catchError((error) {
-                  print(error);
-                }).then((value) {
+                await viewModel.createOrUpdate(createOrupdate).then((value) {
                   Navigator.pop(context, 'refresh');
+                }).catchError((error) {
+                  print(error);
                 });
               }
             },
@@ -67,10 +65,10 @@ class _PageCadastroVeiculo extends State<PageCadastroVeiculo> {
               onPressed: () async {
                 Veiculo obj = Veiculo(id: idController.text);
 
-                await viewModel.delete(obj).catchError((error) {
-                  print(error);
-                }).then((value) {
+                await viewModel.delete(obj).then((value) {
                   Navigator.pop(context, 'refresh');
+                }).catchError((error) {
+                  print(error);
                 });
               },
             ),

@@ -43,12 +43,10 @@ class _PageCadastroAviso extends State<PageCadastroAviso> {
                     titulo: tituloController.text,
                     message: messageController.text);
 
-                await viewModel
-                    .createOrUpdate(createOrupdate)
-                    .catchError((error) {
-                  print(error);
-                }).then((value) {
+                await viewModel.createOrUpdate(createOrupdate).then((value) {
                   Navigator.pop(context, 'refresh');
+                }).catchError((error) {
+                  print(error);
                 });
               }
             },
@@ -59,10 +57,10 @@ class _PageCadastroAviso extends State<PageCadastroAviso> {
               onPressed: () async {
                 Aviso obj = Aviso(id: idController.text);
 
-                await viewModel.delete(obj).catchError((error) {
-                  print(error);
-                }).then((value) {
+                await viewModel.delete(obj).then((value) {
                   Navigator.pop(context, 'refresh');
+                }).catchError((error) {
+                  print(error);
                 });
               },
             ),
