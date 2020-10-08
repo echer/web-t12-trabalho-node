@@ -90,7 +90,7 @@ class _PageCadastroUsuario extends State<PageCadastroUsuario> {
                   },
                 ),
                 TextFormField(
-                  controller: nomeController,
+                  controller: emailController,
                   decoration: InputDecoration(labelText: 'E-mail'),
                   validator: (value) {
                     if (value.isEmpty) {
@@ -100,7 +100,7 @@ class _PageCadastroUsuario extends State<PageCadastroUsuario> {
                   },
                 ),
                 TextFormField(
-                  controller: nomeController,
+                  controller: senhaController,
                   obscureText: true,
                   decoration: InputDecoration(labelText: 'Senha'),
                   validator: (value) {
