@@ -27,13 +27,13 @@ class PageHome extends StatelessWidget {
               child: Text('Trabalho Alan Echer'),
             ),
             ListTile(
-              leading: Icon(Icons.money_off),
+              leading: Icon(Icons.car_rental),
               title: Text('Meus Veiculos'),
               onTap: () =>
                   {Navigator.of(context).pushNamed(PageVeiculo.routeName)},
             ),
             ListTile(
-              leading: Icon(Icons.money_off),
+              leading: Icon(Icons.info_outline),
               title: Text('Meus Avisos'),
               onTap: () =>
                   {Navigator.of(context).pushNamed(PageAviso.routeName)},
