@@ -44,7 +44,7 @@ class _UsuarioAPI implements UsuarioAPI {
     final _data = <String, dynamic>{};
     _data.addAll(usuario?.toJson() ?? <String, dynamic>{});
     _data.removeWhere((k, v) => v == null);
-    final _result = await _dio.request('/',
+    final _result = await _dio.request('',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'POST',

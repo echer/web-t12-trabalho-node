@@ -20,8 +20,6 @@ Future<void> configureInjection() async {
       () async => await SharedPreferences.getInstance());
   getIt.registerSingletonAsync<Dio>(() async {
     Dio dio = Dio();
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('token');
     dio.options = BaseOptions(receiveTimeout: 5000, connectTimeout: 5000);
     dio.interceptors.add(PrettyDioLogger(
         requestHeader: true,
@@ -34,6 +32,8 @@ Future<void> configureInjection() async {
     dio.interceptors
         .add(InterceptorsWrapper(onRequest: (Options options) async {
       dio.interceptors.requestLock.lock();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString('token');
       options.headers["token"] = token;
       dio.interceptors.requestLock.unlock();
       return options;
